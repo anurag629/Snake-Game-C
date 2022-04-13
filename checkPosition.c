@@ -1,60 +1,66 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "header.h"
 
-void position(int height, int width, char *border[], int food[], char input, int head[], int tail[]){
-    if(border[head[0]][head[1]] == '>' && input != '>'){
-        if(input == '<'){
+void position(int height, int width, char *border[], int food[], char input, int head[], int tail[])
+{
+    if (input == '>')
+    {
+        if (border[head[0]][head[1] + 1] == '-')
+        {
             printf("CAN NOT MOVE BACKWORD.....\n");
         }
-        else if(border[head[0]][head[1]] == input){
-            move(height, width, border, food, '<', head, tail);
+        else if (border[head[0]][head[1]] == input)
+        {
+            move(height, width, border, food, '>', head, tail);
         }
-        else{
-            border[head[0]][head[1]] = input;
-        }
-        
-    }
-    else if(border[head[0]][head[1]] == '^' && input != '^'){
-        if(input == 'v'){
-            printf("CAN NOT MOVE BACKWORD.....\n");
-        }
-        else if(border[head[0]][head[1]] == input){
-            move(height, width, border, food, '<', head, tail);
-        }
-        else{
+        else
+        {
             border[head[0]][head[1]] = input;
         }
     }
-    else if(border[head[0]][head[1]] == '<' && input != '<'){
-        if(input == '>'){
+    else if (input == '<')
+    {
+        if (border[head[0]][head[1] - 1] == '-')
+        {
             printf("CAN NOT MOVE BACKWORD.....\n");
         }
-        else if(border[head[0]][head[1]] == input){
+        else if (border[head[0]][head[1]] == input)
+        {
             move(height, width, border, food, '<', head, tail);
         }
-        else{
+        else
+        {
             border[head[0]][head[1]] = input;
         }
     }
-    else if(border[head[0]][head[1]] == 'v' && input != 'v'){
-        if(input == '^'){
+    else if (input == '^')
+    {
+        if (border[head[0] + 1][head[1]] == '|')
+        {
             printf("CAN NOT MOVE BACKWORD.....\n");
         }
-        else if(border[head[0]][head[1]] == input){
-            move(height, width, border, food, '<', head, tail);
+        else if (border[head[0]][head[1]] == input)
+        {
+            move(height, width, border, food, '^', head, tail);
         }
-        else{
+        else
+        {
             border[head[0]][head[1]] = input;
         }
     }
-    else{
-
+    else if (input == 'v')
+    {
+        if (border[head[0] - 1][head[1]] == '|')
+        {
+            printf("CAN NOT MOVE BACKWORD.....\n");
+        }
+        else if (border[head[0]][head[1]] == input)
+        {
+            move(height, width, border, food, 'v', head, tail);
+        }
+        else
+        {
+            border[head[0]][head[1]] = input;
+        }
     }
-    // for (int i = 0; i < height; i++)
-    // {
-    //     for (int j = 0; j < width; j++)
-    //     {
-            
-    //     }
-    //}
 }

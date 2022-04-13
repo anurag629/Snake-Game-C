@@ -31,27 +31,27 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
         {
         case 'a':
             position(height, width, border, food, '<', head, tail);
+            printf("a Pressed\n");
             draw(height, width, border);
-            printf("a pressed");
             break;
         case 's':
             position(height, width, border, food, 'v', head, tail);
+            printf("s Pressed\n");
             draw(height, width, border);
-            printf("s pressed");
             break;
         case 'd':
             position(height, width, border, food, '>', head, tail);
+            printf("d Pressed\n");
             draw(height, width, border);
-            printf("d pressed");
             break;
         case 'w':
             position(height, width, border, food, '^', head, tail);
+            printf("w Pressed\n");
             draw(height, width, border);
-            printf("w pressed");
             break;
         default:
+            printf("Wrong Key Pressed. Press from (w : up | s : down | a : left | d : right)\n");
             draw(height, width, border);
-            printf("wrong key");
             break;
         }
     }
@@ -59,4 +59,3 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
     /*restore the old settings*/
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 }
-

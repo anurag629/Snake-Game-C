@@ -1,7 +1,7 @@
 $(CC) = gcc
 
-final: main.o drawBox.o getSize.o random.o key.o checkPosition.o
-		$(CC) main.o drawBox.o getSize.o random.o key.o checkPosition.o -o snake
+final: main.o drawBox.o getSize.o random.o key.o checkPosition.o move.o
+		$(CC) main.o drawBox.o getSize.o random.o key.o checkPosition.o move.o -o snake
 
 main.o: main.c header.h
 		$(CC) -c main.c
@@ -21,5 +21,7 @@ key.o: key.c header.h
 checkPosition.o: checkPosition.c header.h
 	$(CC) -c checkPosition.c
 
+move.o: move.c header.h
+	$(CC) -c move.c
 clean:
 	rm *.o snake

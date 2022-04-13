@@ -3,7 +3,7 @@
 
 void draw(int height, int width, char *border[])
 {
-    // system("cls");
+    // system("clear"); /*clear output screen*/
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -21,11 +21,11 @@ void draw(int height, int width, char *border[])
                 }
                 else if (border[i][j] == '>' || border[i][j] == '^' || border[i][j] == '<' || border[i][j] == 'v')
                 {
-                    if(border[i][j] == '>')
+                    if (border[i][j] == '>')
                         printf(">");
-                    else if(border[i][j] == '^')
+                    else if (border[i][j] == '^')
                         printf("^");
-                    else if(border[i][j] == '<')
+                    else if (border[i][j] == '<')
                         printf("<");
                     else
                         printf("v");
@@ -34,9 +34,13 @@ void draw(int height, int width, char *border[])
                 {
                     printf("@");
                 }
-                else
+                else if (border[i][j] == '-')
                 {
                     printf("-");
+                }
+                else if (border[i][j] == '|')
+                {
+                    printf("|");
                 }
             }
 

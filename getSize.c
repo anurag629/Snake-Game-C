@@ -17,7 +17,7 @@ void getSize(int r, int c, int snakeSize)
     TwoDBox[1][snakeSize] = '>';
 
     for (int j = 2; j < snakeSize; j++)
-        TwoDBox[1][j] = '1';
+        TwoDBox[1][j] = '-';
 
     int rc[] = {r, c};
     srand(time(0));
@@ -30,7 +30,7 @@ void getSize(int r, int c, int snakeSize)
     draw(r, c, TwoDBox);
 
     int head[2] = {1, snakeSize};
-    int tail[2] = {1,1};
+    int tail[2] = {1, 1};
 
     input(r, c, TwoDBox, food, head, tail);
     /* Code for further processing and free the
@@ -39,9 +39,4 @@ void getSize(int r, int c, int snakeSize)
         free(TwoDBox[i]);
 
     free(food);
-    // free(food[1]);
-    // free(head);
-    // free(head[1]);
-    // free(tail);
-    // free(tail[1]);
 }
