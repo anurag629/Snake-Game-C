@@ -12,6 +12,10 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             border[head[0]][head[1] + 1] = '>';
             border[head[0]][head[1]] = '-';
+            head[1] = head[1] + 1;
+            border[tail[0]][tail[1] + 1] = '#';
+            border[tail[0]][tail[1]] = '0';
+            tail[1] = tail[1] + 1;
         }
     }
     if (border[head[0]][head[1]] == '<')
@@ -24,6 +28,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             border[head[0]][head[1] - 1] = '<';
             border[head[0]][head[1]] = '-';
+            head[1] = head[1] - 1;
         }
     }
     if (border[head[0]][head[1]] == '^')
@@ -36,6 +41,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             border[head[0] - 1][head[1]] = '^';
             border[head[0]][head[1]] = '|';
+            head[0] = head[0] - 1;
         }
     }
     if (border[head[0]][head[1]] == 'v')
@@ -46,8 +52,9 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         }
         else
         {
-            border[head[0] + 1][head[1] + 1] = 'v';
+            border[head[0] + 1][head[1]] = 'v';
             border[head[0]][head[1]] = '|';
+            head[0] = head[0] + 1;
         }
     }
 }

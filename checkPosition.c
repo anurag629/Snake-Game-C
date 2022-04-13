@@ -35,7 +35,7 @@ void position(int height, int width, char *border[], int food[], char input, int
     }
     else if (input == '^')
     {
-        if (border[head[0] + 1][head[1]] == '|')
+        if (border[head[0] - 1][head[1]] == '|')
         {
             printf("CAN NOT MOVE BACKWORD.....\n");
         }
@@ -50,7 +50,7 @@ void position(int height, int width, char *border[], int food[], char input, int
     }
     else if (input == 'v')
     {
-        if (border[head[0] - 1][head[1]] == '|')
+        if (border[head[0] + 1][head[1]] == '|')
         {
             printf("CAN NOT MOVE BACKWORD.....\n");
         }

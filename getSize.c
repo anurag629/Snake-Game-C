@@ -10,8 +10,19 @@ void getSize(int r, int c, int snakeSize)
         TwoDBox[i] = (char *)malloc(c * sizeof(char));
 
     for (int i = 0; i < r; i++)
+    {
         for (int j = 0; j < c; j++)
-            TwoDBox[i][j] = '0';
+        {
+            if (i == 0 || i == r - 1 || j == 0 || j == c - 1)
+            {
+                TwoDBox[i][j] = '*';
+            }
+            else
+            {
+                TwoDBox[i][j] = '0';
+            }
+        }
+    }
 
     TwoDBox[1][1] = '#';
     TwoDBox[1][snakeSize] = '>';
