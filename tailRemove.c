@@ -1,9 +1,9 @@
-void tailRemove(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition, int snakeSize)
+void tailRemove(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize)
 {
-    int h = 0;
-    for (int i = 0; i < height; i++)
+
+    for (int i = 1; i < height - 1; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 1; j < width - 1; j++)
         {
             if (border[i][j] == '#')
             {
@@ -13,6 +13,13 @@ void tailRemove(int height, int width, char *border[], int food[], int head[], i
             {
                 border[i][j] = '#';
             }
+            // for (int h = 0; h < snakeSize; h++)
+            // {
+            //     if (snakePosition[h] != i * width + j)
+            //     {
+            //         border[i][j] = '0';
+            //     }
+            // }
         }
     }
 }
