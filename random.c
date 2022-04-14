@@ -13,19 +13,5 @@ int *getarray(int a[], int snakeSize)
             flag = 0;
     }
 
-    printf("%d ", a[0]);
-    printf("%d\n", a[1]);
     return a;
 }
-// int main()
-// {
-//     int *n;
-//     int a[2] = {13, 14};
-//     srand(time(0));
-//     n = getarray(a, 7);
-
-//     printf("%d ", n[0]);
-//     printf("%d", n[1]);
-
-//     return 0;
-// }

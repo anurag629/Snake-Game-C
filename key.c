@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "header.h"
 
-void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition)
+void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition, int snakeSize)
 {
     char key;
 
@@ -30,22 +30,22 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
         switch (key)
         {
         case 'a':
-            position(height, width, border, food, '<', head, tail);
+            position(height, width, border, food, '<', head, tail, snakePosition, snakeSize);
             printf("a Pressed\n");
             draw(height, width, border, snakePosition);
             break;
         case 's':
-            position(height, width, border, food, 'v', head, tail);
+            position(height, width, border, food, 'v', head, tail, snakePosition, snakeSize);
             printf("s Pressed\n");
             draw(height, width, border, snakePosition);
             break;
         case 'd':
-            position(height, width, border, food, '>', head, tail);
+            position(height, width, border, food, '>', head, tail, snakePosition, snakeSize);
             printf("d Pressed\n");
             draw(height, width, border, snakePosition);
             break;
         case 'w':
-            position(height, width, border, food, '^', head, tail);
+            position(height, width, border, food, '^', head, tail, snakePosition, snakeSize);
             printf("w Pressed\n");
             draw(height, width, border, snakePosition);
             break;

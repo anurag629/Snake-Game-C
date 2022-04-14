@@ -29,8 +29,8 @@ void getSize(int r, int c, int snakeSize)
 
     TwoDBox[1][1] = '#';
     TwoDBox[1][snakeSize] = '>';
-    snakePosition[0] = 1 * c + 2;
-    snakePosition[snakeSize - 1] = 1 * c + snakeSize + 1;
+    snakePosition[0] = 1 * c + 1;
+    snakePosition[snakeSize - 1] = 1 * c + snakeSize;
 
     for (int j = 2; j < snakeSize; j++)
     {
@@ -38,15 +38,17 @@ void getSize(int r, int c, int snakeSize)
     }
     for (int j = 1; j < snakeSize - 1; j++)
     {
-        snakePosition[j] = 1 * c + j + 2;
+        snakePosition[j] = 1 * c + j + 1;
+    }
+    for (int i = 0; i < snakeSize; i++)
+    {
+        printf("%d ", snakePosition[i]);
     }
 
     int rc[] = {r, c};
     srand(time(0));
     int *food = getarray(rc, snakeSize);
 
-    printf("%d ", food[0]);
-    printf("%d\n", food[1]);
     TwoDBox[food[0]][food[1]] = '@';
 
     draw(r, c, TwoDBox, snakePosition);
@@ -54,7 +56,7 @@ void getSize(int r, int c, int snakeSize)
     int head[2] = {1, snakeSize};
     int tail[2] = {1, 1};
 
-    input(r, c, TwoDBox, food, head, tail, snakePosition);
+    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize);
     /* Code for further processing and free the
       dynamically allocated memory */
     for (int i = 0; i < r; i++)
