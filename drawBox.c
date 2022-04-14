@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void draw(int height, int width, char *border[])
+void draw(int height, int width, char *border[], int *snakePosition)
 {
     // system("clear"); /*clear output screen*/
     for (int i = 0; i < height; i++)

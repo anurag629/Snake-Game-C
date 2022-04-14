@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "header.h"
 
-void input(int height, int width, char *border[], int food[], int head[], int tail[])
+void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition)
 {
     char key;
 
@@ -32,26 +32,26 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
         case 'a':
             position(height, width, border, food, '<', head, tail);
             printf("a Pressed\n");
-            draw(height, width, border);
+            draw(height, width, border, snakePosition);
             break;
         case 's':
             position(height, width, border, food, 'v', head, tail);
             printf("s Pressed\n");
-            draw(height, width, border);
+            draw(height, width, border, snakePosition);
             break;
         case 'd':
             position(height, width, border, food, '>', head, tail);
             printf("d Pressed\n");
-            draw(height, width, border);
+            draw(height, width, border, snakePosition);
             break;
         case 'w':
             position(height, width, border, food, '^', head, tail);
             printf("w Pressed\n");
-            draw(height, width, border);
+            draw(height, width, border, snakePosition);
             break;
         default:
             printf("Wrong Key Pressed. Press from (w : up | s : down | a : left | d : right)\n");
-            draw(height, width, border);
+            draw(height, width, border, snakePosition);
             break;
         }
     }

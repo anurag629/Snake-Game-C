@@ -6,6 +6,9 @@
 void getSize(int r, int c, int snakeSize)
 {
     char *TwoDBox[r];
+    int *snakePosition;
+    snakePosition = (int *)malloc(snakeSize * sizeof(int));
+
     for (int i = 0; i < r; i++)
         TwoDBox[i] = (char *)malloc(c * sizeof(char));
 
@@ -26,9 +29,14 @@ void getSize(int r, int c, int snakeSize)
 
     TwoDBox[1][1] = '#';
     TwoDBox[1][snakeSize] = '>';
+    snakePosition[0] = 1 * c + 1;
+    snakePosition[snakeSize - 1] = 1 * c + snakeSize;
 
     for (int j = 2; j < snakeSize; j++)
+    {
         TwoDBox[1][j] = '-';
+        snakePosition[1 * c + j] = 1 * c + j;
+    }
 
     int rc[] = {r, c};
     srand(time(0));
@@ -38,16 +46,17 @@ void getSize(int r, int c, int snakeSize)
     printf("%d\n", food[1]);
     TwoDBox[food[0]][food[1]] = '@';
 
-    draw(r, c, TwoDBox);
+    draw(r, c, TwoDBox, snakePosition);
 
     int head[2] = {1, snakeSize};
     int tail[2] = {1, 1};
 
-    input(r, c, TwoDBox, food, head, tail);
+    input(r, c, TwoDBox, food, head, tail, snakePosition);
     /* Code for further processing and free the
       dynamically allocated memory */
     for (int i = 0; i < r; i++)
         free(TwoDBox[i]);
 
+    free(snakePosition);
     free(food);
 }
