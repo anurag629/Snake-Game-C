@@ -12,7 +12,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         }
         else if (border[head[0]][head[1] + 1] == '-' || border[head[0]][head[1] + 1] == '|' || border[head[0]][head[1] + 1] == '#')
         {
-            printf("YOU LOOSE......\n");
+            printf("You lose :(\n");
             exit(0);
         }
         else
@@ -28,7 +28,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
             tailRemove(height, width, border, food, input, head, tail, snakePosition, snakeSize);
             if (border[head[0]][head[1] + 1] == '@')
             {
-                printf("YOU WON......\n");
+                printf("You win! :)\n");
                 exit(0);
             }
         }
@@ -41,12 +41,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         }
         else if (border[head[0]][head[1] - 1] == '-' || border[head[0]][head[1] - 1] == '|' || border[head[0]][head[1] - 1] == '#')
         {
-            printf("YOU LOOSE......\n");
+            printf("You lose :(\n");
             exit(0);
         }
         else if (border[head[0]][head[1] - 1] == '@')
         {
-            printf("YOU WON......\n");
+            printf("You win! :)\n");
             exit(0);
         }
         else
@@ -70,12 +70,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         }
         else if (border[head[0] - 1][head[1]] == '-' || border[head[0] - 1][head[1]] == '|' || border[head[0] - 1][head[1]] == '#')
         {
-            printf("YOU LOOSE......\n");
+            printf("You lose :(\n");
             exit(0);
         }
         else if (border[head[0] - 1][head[1]] == '@')
         {
-            printf("YOU WON......\n");
+            printf("You win! :)\n");
             exit(0);
         }
         else
@@ -99,12 +99,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         }
         else if (border[head[0] + 1][head[1]] == '-' || border[head[0] + 1][head[1]] == '|' || border[head[0] + 1][head[1]] == '#')
         {
-            printf("YOU LOOSE......\n");
+            printf("You lose :(\n");
             exit(0);
         }
         else if (border[head[0] + 1][head[1]] == '@')
         {
-            printf("YOU WON......\n");
+            printf("You win! :)\n");
             exit(0);
         }
         else

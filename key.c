@@ -47,7 +47,7 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
             break;
         default:
             draw(height, width, border, snakePosition);
-            printf("Wrong Key Pressed. Press from (w : up | s : down | a : left | d : right)\n");
+            printf("invalid key\n");
             break;
         }
     }

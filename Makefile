@@ -26,5 +26,6 @@ move.o: move.c header.h
 
 tailRemove.o: tailRemove.c header.h
 	$(CC) -c tailRemove.c
+
 clean:
 	rm *.o snake
