@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "header.h"
 
 void move(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize)
@@ -12,8 +13,8 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         else if (border[head[0]][head[1] + 1] == '-' || border[head[0]][head[1] + 1] == '|' || border[head[0]][head[1] + 1] == '#')
         {
             printf("YOU LOOSE......\n");
+            exit(0);
         }
-
         else
         {
             border[head[0]][head[1] + 1] = '>';
@@ -25,6 +26,11 @@ void move(int height, int width, char *border[], int food[], char input, int hea
             }
             snakePosition[snakeSize - 1] = (head[0] * width) + head[1];
             tailRemove(height, width, border, food, input, head, tail, snakePosition, snakeSize);
+            if (border[head[0]][head[1] + 1] == '@')
+            {
+                printf("YOU WON......\n");
+                exit(0);
+            }
         }
     }
     if (border[head[0]][head[1]] == '<')
@@ -36,6 +42,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         else if (border[head[0]][head[1] - 1] == '-' || border[head[0]][head[1] - 1] == '|' || border[head[0]][head[1] - 1] == '#')
         {
             printf("YOU LOOSE......\n");
+            exit(0);
+        }
+        else if (border[head[0]][head[1] - 1] == '@')
+        {
+            printf("YOU WON......\n");
+            exit(0);
         }
         else
         {
@@ -59,6 +71,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         else if (border[head[0] - 1][head[1]] == '-' || border[head[0] - 1][head[1]] == '|' || border[head[0] - 1][head[1]] == '#')
         {
             printf("YOU LOOSE......\n");
+            exit(0);
+        }
+        else if (border[head[0] - 1][head[1]] == '@')
+        {
+            printf("YOU WON......\n");
+            exit(0);
         }
         else
         {
@@ -82,6 +100,12 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         else if (border[head[0] + 1][head[1]] == '-' || border[head[0] + 1][head[1]] == '|' || border[head[0] + 1][head[1]] == '#')
         {
             printf("YOU LOOSE......\n");
+            exit(0);
+        }
+        else if (border[head[0] + 1][head[1]] == '@')
+        {
+            printf("YOU WON......\n");
+            exit(0);
         }
         else
         {
