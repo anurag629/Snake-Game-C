@@ -29,13 +29,16 @@ void getSize(int r, int c, int snakeSize)
 
     TwoDBox[1][1] = '#';
     TwoDBox[1][snakeSize] = '>';
-    snakePosition[0] = 1 * c + 1;
-    snakePosition[snakeSize - 1] = 1 * c + snakeSize;
+    snakePosition[0] = 1 * c + 2;
+    snakePosition[snakeSize - 1] = 1 * c + snakeSize + 1;
 
     for (int j = 2; j < snakeSize; j++)
     {
         TwoDBox[1][j] = '-';
-        snakePosition[1 * c + j] = 1 * c + j;
+    }
+    for (int j = 1; j < snakeSize - 1; j++)
+    {
+        snakePosition[j] = 1 * c + j + 2;
     }
 
     int rc[] = {r, c};
