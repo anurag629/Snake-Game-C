@@ -40,10 +40,6 @@ void getSize(int r, int c, int snakeSize)
     {
         snakePosition[j] = 1 * c + j + 1;
     }
-    for (int i = 0; i < snakeSize; i++)
-    {
-        printf("%d ", snakePosition[i]);
-    }
 
     int rc[] = {r, c};
     srand(time(0));

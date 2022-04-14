@@ -3,7 +3,8 @@
 
 void draw(int height, int width, char *border[], int *snakePosition)
 {
-    printf("\n");
+
+    system("clear"); /*clear output screen*/
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -52,19 +53,3 @@ void draw(int height, int width, char *border[], int *snakePosition)
         printf("\n");
     }
 }
-
-// int main()
-// {
-//     int arr[2] = {4, 3};
-//     int border[13][14];
-//     for (int i = 0; i < 13; i++)
-//         for (int j = 0; j < 14; j++)
-//             border[i][j] = 0;
-
-//     border[1][1] = 2;
-//     border[1][6] = 3;
-
-//     for (int j = 2; j < 6; j++)
-//         border[1][j] = 1;
-//     draw(13, 14, border, arr);
-// }

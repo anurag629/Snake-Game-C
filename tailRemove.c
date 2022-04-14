@@ -13,13 +13,6 @@ void tailRemove(int height, int width, char *border[], int food[], char input, i
             {
                 border[i][j] = '#';
             }
-            // for (int h = 0; h < snakeSize; h++)
-            // {
-            //     if (snakePosition[h] != i * width + j)
-            //     {
-            //         border[i][j] = '0';
-            //     }
-            // }
         }
     }
 }

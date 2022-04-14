@@ -9,6 +9,11 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
+        else if (border[head[0]][head[1] + 1] == '-' || border[head[0]][head[1] + 1] == '|' || border[head[0]][head[1] + 1] == '#')
+        {
+            printf("YOU LOOSE......\n");
+        }
+
         else
         {
             border[head[0]][head[1] + 1] = '>';
@@ -27,6 +32,10 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         if (border[head[0]][head[1] - 1] == '*')
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
+        }
+        else if (border[head[0]][head[1] - 1] == '-' || border[head[0]][head[1] - 1] == '|' || border[head[0]][head[1] - 1] == '#')
+        {
+            printf("YOU LOOSE......\n");
         }
         else
         {
@@ -47,6 +56,10 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
+        else if (border[head[0] - 1][head[1]] == '-' || border[head[0] - 1][head[1]] == '|' || border[head[0] - 1][head[1]] == '#')
+        {
+            printf("YOU LOOSE......\n");
+        }
         else
         {
             border[head[0] - 1][head[1]] = '^';
@@ -66,6 +79,10 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
+        else if (border[head[0] + 1][head[1]] == '-' || border[head[0] + 1][head[1]] == '|' || border[head[0] + 1][head[1]] == '#')
+        {
+            printf("YOU LOOSE......\n");
+        }
         else
         {
             border[head[0] + 1][head[1]] = 'v';
@@ -78,9 +95,5 @@ void move(int height, int width, char *border[], int food[], char input, int hea
             snakePosition[snakeSize - 1] = (head[0]) * width + head[1];
             tailRemove(height, width, border, food, input, head, tail, snakePosition, snakeSize);
         }
-    }
-    for (int i = 0; i < snakeSize; i++)
-    {
-        printf("%d ", snakePosition[i]);
     }
 }

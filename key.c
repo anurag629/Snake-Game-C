@@ -26,32 +26,37 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
 
     while ((key = getchar()))
     {
-        system("clear"); /*clear output screen*/
+
         switch (key)
         {
         case 'a':
+            draw(height, width, border, snakePosition);
             position(height, width, border, food, '<', head, tail, snakePosition, snakeSize);
             printf("a Pressed\n");
-            draw(height, width, border, snakePosition);
+
             break;
         case 's':
+            draw(height, width, border, snakePosition);
             position(height, width, border, food, 'v', head, tail, snakePosition, snakeSize);
             printf("s Pressed\n");
-            draw(height, width, border, snakePosition);
+
             break;
         case 'd':
+            draw(height, width, border, snakePosition);
             position(height, width, border, food, '>', head, tail, snakePosition, snakeSize);
             printf("d Pressed\n");
-            draw(height, width, border, snakePosition);
+
             break;
         case 'w':
+            draw(height, width, border, snakePosition);
             position(height, width, border, food, '^', head, tail, snakePosition, snakeSize);
             printf("w Pressed\n");
-            draw(height, width, border, snakePosition);
+
             break;
         default:
-            printf("Wrong Key Pressed. Press from (w : up | s : down | a : left | d : right)\n");
             draw(height, width, border, snakePosition);
+            printf("Wrong Key Pressed. Press from (w : up | s : down | a : left | d : right)\n");
+
             break;
         }
     }
