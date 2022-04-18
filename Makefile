@@ -2,6 +2,7 @@ $(CC) = gcc
 
 final: main.o drawBox.o getSize.o random.o key.o checkPosition.o move.o tailRemove.o
 		$(CC) main.o drawBox.o getSize.o random.o key.o checkPosition.o move.o tailRemove.o -o snake
+		./snake $(UNBEATABLE)
 
 main.o: main.c header.h
 		$(CC) -c main.c

@@ -3,7 +3,7 @@
 #include <time.h>
 #include "header.h"
 
-void getSize(int r, int c, int snakeSize)
+void getSize(int r, int c, int snakeSize, int UNBEATABLE)
 {
     char *TwoDBox[r];
     int *snakePosition;
@@ -52,7 +52,7 @@ void getSize(int r, int c, int snakeSize)
     int head[2] = {1, snakeSize};
     int tail[2] = {1, 1};
 
-    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize);
+    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize, UNBEATABLE);
     /* Code for further processing and free the
       dynamically allocated memory */
     for (int i = 0; i < r; i++)

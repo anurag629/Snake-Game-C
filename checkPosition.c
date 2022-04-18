@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "header.h"
 
-void position(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize)
+void position(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize, int UNBEATABLE)
 {
     if (input == '>')
     {
@@ -11,7 +11,7 @@ void position(int height, int width, char *border[], int food[], char input, int
         }
         else if (border[head[0]][head[1]] == input)
         {
-            move(height, width, border, food, '>', head, tail, snakePosition, snakeSize);
+            move(height, width, border, food, '>', head, tail, snakePosition, snakeSize, UNBEATABLE);
         }
         else
         {
@@ -26,7 +26,7 @@ void position(int height, int width, char *border[], int food[], char input, int
         }
         else if (border[head[0]][head[1]] == input)
         {
-            move(height, width, border, food, '<', head, tail, snakePosition, snakeSize);
+            move(height, width, border, food, '<', head, tail, snakePosition, snakeSize, UNBEATABLE);
         }
         else
         {
@@ -41,7 +41,7 @@ void position(int height, int width, char *border[], int food[], char input, int
         }
         else if (border[head[0]][head[1]] == input)
         {
-            move(height, width, border, food, '^', head, tail, snakePosition, snakeSize);
+            move(height, width, border, food, '^', head, tail, snakePosition, snakeSize, UNBEATABLE);
         }
         else
         {
@@ -56,7 +56,7 @@ void position(int height, int width, char *border[], int food[], char input, int
         }
         else if (border[head[0]][head[1]] == input)
         {
-            move(height, width, border, food, 'v', head, tail, snakePosition, snakeSize);
+            move(height, width, border, food, 'v', head, tail, snakePosition, snakeSize, UNBEATABLE);
         }
         else
         {

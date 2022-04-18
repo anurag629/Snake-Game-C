@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "header.h"
 
-void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition, int snakeSize)
+void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition, int snakeSize, int UNBEATABLE)
 {
     char key;
 
@@ -30,20 +30,24 @@ void input(int height, int width, char *border[], int food[], int head[], int ta
         switch (key)
         {
         case 'a':
+
+            position(height, width, border, food, '<', head, tail, snakePosition, snakeSize, UNBEATABLE);
             draw(height, width, border, snakePosition);
-            position(height, width, border, food, '<', head, tail, snakePosition, snakeSize);
             break;
         case 's':
+
+            position(height, width, border, food, 'v', head, tail, snakePosition, snakeSize, UNBEATABLE);
             draw(height, width, border, snakePosition);
-            position(height, width, border, food, 'v', head, tail, snakePosition, snakeSize);
             break;
         case 'd':
+
+            position(height, width, border, food, '>', head, tail, snakePosition, snakeSize, UNBEATABLE);
             draw(height, width, border, snakePosition);
-            position(height, width, border, food, '>', head, tail, snakePosition, snakeSize);
             break;
         case 'w':
+
+            position(height, width, border, food, '^', head, tail, snakePosition, snakeSize, UNBEATABLE);
             draw(height, width, border, snakePosition);
-            position(height, width, border, food, '^', head, tail, snakePosition, snakeSize);
             break;
         default:
             draw(height, width, border, snakePosition);
