@@ -3,8 +3,27 @@
 #include <time.h>
 #include "header.h"
 
-void getSize(int r, int c, int snakeSize, int UNBEATABLE)
+void getSize(char filename[], int c)
 {
+    int r, c, snakeSize;
+
+    FILE *fp = fopen(filename, "r");
+
+    if (fp == NULL)
+    {
+        printf("Error: could not open file %s", filename);
+        return 1;
+    }
+
+    // read one character at a time and
+    // display it to the output
+    char ch;
+    while ((ch = fgetc(fp)) != EOF)
+        putchar(ch);
+
+    // close the file
+    fclose(fp);
+
     char *TwoDBox[r];
     int *snakePosition;
     snakePosition = (int *)malloc(snakeSize * sizeof(int));
