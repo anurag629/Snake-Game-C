@@ -1,28 +1,54 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <sys/stat.h>
+
+// const char *filename = "check.txt";
 #include "header.h"
+
+struct node
+{
+    int row;
+    int column;
+    struct node *next;
+};
+
+struct node *head = NULL;
+struct node *current = NULL;
 
 void getSize(char filename[], int c)
 {
     int r, c, snakeSize;
 
-    FILE *fp = fopen(filename, "r");
+    // Opening file
 
-    if (fp == NULL)
+    FILE *in_file = fopen("check.txt", "r");
+
+    if (!in_file)
     {
-        printf("Error: could not open file %s", filename);
-        return 1;
+        perror("fopen");
+        exit(EXIT_FAILURE);
     }
 
-    // read one character at a time and
-    // display it to the output
-    char ch;
-    while ((ch = fgetc(fp)) != EOF)
-        putchar(ch);
+    struct stat sb;
+    if (stat(filename, &sb) == -1)
+    {
+        perror("stat");
+        exit(EXIT_FAILURE);
+    }
 
-    // close the file
-    fclose(fp);
+    char *file_contents = malloc(sb.st_size);
+
+    int i1 = 0, i2 = 1;
+    while (fscanf(in_file, "%[^\n ] ", file_contents) != EOF)
+    {
+        // printf("> %s\n", file_contents);
+        char *ll = file_contents;
+        printf("%s\n", ll);
+    }
+
+    fclose(in_file);
+    // Closing file
 
     char *TwoDBox[r];
     int *snakePosition;
@@ -71,7 +97,7 @@ void getSize(char filename[], int c)
     int head[2] = {1, snakeSize};
     int tail[2] = {1, 1};
 
-    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize, UNBEATABLE);
+    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize);
     /* Code for further processing and free the
       dynamically allocated memory */
     for (int i = 0; i < r; i++)

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "header.h"
 
-void move(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize, int UNBEATABLE)
+void move(int height, int width, char *border[], int food[], char input, int head[], int tail[], int *snakePosition, int snakeSize)
 {
     if (border[head[0]][head[1]] == '>')
     {
@@ -10,7 +10,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
-        else if ((border[head[0]][head[1] + 1] == '-' || border[head[0]][head[1] + 1] == '|' || border[head[0]][head[1] + 1] == '#') && UNBEATABLE == 0)
+        else if ((border[head[0]][head[1] + 1] == '-' || border[head[0]][head[1] + 1] == '|' || border[head[0]][head[1] + 1] == '#'))
         {
             printf("You lose :(\n");
             exit(0);
@@ -39,7 +39,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
-        else if ((border[head[0]][head[1] - 1] == '-' || border[head[0]][head[1] - 1] == '|' || border[head[0]][head[1] - 1] == '#') && UNBEATABLE == 0)
+        else if ((border[head[0]][head[1] - 1] == '-' || border[head[0]][head[1] - 1] == '|' || border[head[0]][head[1] - 1] == '#'))
         {
             printf("You lose :(\n");
             exit(0);
@@ -68,7 +68,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
-        else if ((border[head[0] - 1][head[1]] == '-' || border[head[0] - 1][head[1]] == '|' || border[head[0] - 1][head[1]] == '#') && UNBEATABLE == 0)
+        else if ((border[head[0] - 1][head[1]] == '-' || border[head[0] - 1][head[1]] == '|' || border[head[0] - 1][head[1]] == '#'))
         {
             printf("You lose :(\n");
             exit(0);
@@ -97,7 +97,7 @@ void move(int height, int width, char *border[], int food[], char input, int hea
         {
             printf("CAN NOT MOVE INSIDE WALL.....\n");
         }
-        else if ((border[head[0] + 1][head[1]] == '-' || border[head[0] + 1][head[1]] == '|' || border[head[0] + 1][head[1]] == '#') && UNBEATABLE == 0)
+        else if ((border[head[0] + 1][head[1]] == '-' || border[head[0] + 1][head[1]] == '|' || border[head[0] + 1][head[1]] == '#'))
         {
             printf("You lose :(\n");
             exit(0);
