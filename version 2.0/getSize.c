@@ -6,23 +6,27 @@
 // const char *filename = "check.txt";
 #include "header.h"
 
-struct node
+Node *make_node(int r, int c, char icon, Node *next)
 {
-    int row;
-    int column;
-    struct node *next;
-};
+    Node *newnode = (Node *)malloc(sizeof(Node));
+    newnode->r = r;
+    newnode->c = c;
+    newnode->icon = icon;
+    newnode->next = next;
+    return newnode;
+}
 
-struct node *head = NULL;
-struct node *current = NULL;
-
-void getSize(char filename[], int c)
+void getSize(const char *filename, int foodcount)
 {
-    int r, c, snakeSize;
+    int r, c, snakeSize = 3;
+
+    Node *start = make_node(0, 0, '0', NULL);
+    int snakerow, snakecol; // variable to store snake position row and column
+    char *snakeicon;        // variable to store snake icon
 
     // Opening file
 
-    FILE *in_file = fopen("check.txt", "r");
+    FILE *in_file = fopen(filename, "r");
 
     if (!in_file)
     {
@@ -39,18 +43,48 @@ void getSize(char filename[], int c)
 
     char *file_contents = malloc(sb.st_size);
 
-    int i1 = 0, i2 = 1;
+    int flag = -1;
     while (fscanf(in_file, "%[^\n ] ", file_contents) != EOF)
     {
         // printf("> %s\n", file_contents);
         char *ll = file_contents;
         printf("%s\n", ll);
+        if (flag == -1)
+        {
+            r = atoi(ll);
+            flag = flag + 1;
+        }
+        else if (flag == 0)
+        {
+            c = atoi(ll);
+            flag = flag + 1;
+        }
+        else
+        {
+            if (flag % 3 == 1)
+            {
+                snakerow = atoi(ll);
+                flag = flag + 1;
+            }
+            else if (flag % 3 == 2)
+            {
+                snakecol = atoi(ll);
+                flag = flag + 1;
+            }
+            else
+            {
+                snakeicon = ll;
+                flag = flag + 1;
+                addSnake(snakerow, snakecol, snakeicon, start);
+            }
+        }
     }
 
     fclose(in_file);
     // Closing file
 
     char *TwoDBox[r];
+
     int *snakePosition;
     snakePosition = (int *)malloc(snakeSize * sizeof(int));
 
