@@ -13,7 +13,9 @@ typedef struct Node
 
 Node *make_node(int r, int c, char icon, Node *next);
 
+Node *findNode(int snakerow, int snakecol, char *snakeicon, Node *start);
 void addSnake(int snakerow, int snakecol, char *snakeicon, Node *start);
+
 void getSize(const char *filename, int c);
 void draw(int height, int width, char *border[], int *snakePosition);
 void input(int height, int width, char *border[], int food[], int head[], int tail[], int *snakePosition, int snakeSize);

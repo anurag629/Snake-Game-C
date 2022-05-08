@@ -106,19 +106,19 @@ void getSize(const char *filename, int foodcount)
         }
     }
 
-    TwoDBox[1][1] = '#';
-    TwoDBox[1][snakeSize] = '>';
-    snakePosition[0] = 1 * c + 1;
-    snakePosition[snakeSize - 1] = 1 * c + snakeSize;
+    // TwoDBox[1][1] = '#';
+    // TwoDBox[1][snakeSize] = '>';
+    // snakePosition[0] = 1 * c + 1;
+    // snakePosition[snakeSize - 1] = 1 * c + snakeSize;
 
-    for (int j = 2; j < snakeSize; j++)
-    {
-        TwoDBox[1][j] = '-';
-    }
-    for (int j = 1; j < snakeSize - 1; j++)
-    {
-        snakePosition[j] = 1 * c + j + 1;
-    }
+    // for (int j = 2; j < snakeSize; j++)
+    // {
+    //     TwoDBox[1][j] = '-';
+    // }
+    // for (int j = 1; j < snakeSize - 1; j++)
+    // {
+    //     snakePosition[j] = 1 * c + j + 1;
+    // }
 
     int rc[] = {r, c};
     srand(time(0));
