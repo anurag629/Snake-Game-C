@@ -30,8 +30,5 @@ tailRemove.o: tailRemove.c header.h
 
 addSnake.o: addSnake.c header.h
 	$(CC) -c addSnake.c
-
-# add_Node.o: add_Node.c header.h
-# 	$(CC) -c add_Node.c
 clean:
 	rm *.o snake

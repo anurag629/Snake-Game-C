@@ -1,20 +1,10 @@
-#include <stdlib.h>
-#include <stdio.h>
 #ifndef MY_HEADER
 #define MY_HEADER
 
-typedef struct Node
-{
-    int r;
-    int c;
-    char icon;
-    struct Node *next;
-} Node;
+// Node *make_node(int r, int c, char icon, Node *next);
 
-Node *make_node(int r, int c, char icon, Node *next);
-
-Node *findNode(int snakerow, int snakecol, char *snakeicon, Node *start);
-void addSnake(int snakerow, int snakecol, char *snakeicon, Node *start);
+struct Node *findNode(int snakerow, int snakecol, char snakeicon, struct Node *start);
+void addSnake(int snakerow, int snakecol, char snakeicon, struct Node *start);
 
 void getSize(const char *filename, int c);
 void draw(int height, int width, char *border[], int *snakePosition);

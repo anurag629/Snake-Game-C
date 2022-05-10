@@ -2,19 +2,16 @@
 #include <stdio.h>
 #include <time.h>
 #include <sys/stat.h>
-
-// const char *filename = "check.txt";
 #include "header.h"
 #include "header_s.h"
 
-void getSize(const char *filename, int foodcount)
+void getSize(const char *filename, int countFood)
+// void getSize(int r, int c, int snakeSiz)
 {
-    int r, c, snakeSize = 0, snakeSizee = 0;
 
-    // Node *start = make_node(0, 0, '0', NULL);
-    // struct Node *start = NULL;
-    struct Node *start = (struct Node *)malloc(sizeof(struct Node));
-    start = NULL;
+    int head[2];
+    int tail[2];
+    int r, c, ssnakeSize = 0, snakeSiz = 0;
 
     int snakerow, snakecol; // variable to store snake position row and column
     char snakeicon;         // variable to store snake icon
@@ -58,11 +55,22 @@ void getSize(const char *filename, int foodcount)
         {
             if (flag % 3 == 1)
             {
+                if (flag == 1)
+                {
+                    tail[0] = atoi(ll) + 1;
+                }
+                head[0] = atoi(ll) + 1;
+                printf("head[0] is %d", head[0]);
                 snakerow = atoi(ll);
                 flag = flag + 1;
             }
             else if (flag % 3 == 2)
             {
+                if (flag == 2)
+                {
+                    tail[1] = atoi(ll) + 1;
+                }
+                head[1] = atoi(ll) + 1;
                 snakecol = atoi(ll);
                 flag = flag + 1;
             }
@@ -72,8 +80,8 @@ void getSize(const char *filename, int foodcount)
                 snakeicon = *ll;
 
                 flag = flag + 1;
-                addSnake(snakerow, snakecol, snakeicon, start);
-                snakeSize = snakeSize + 1;
+
+                ssnakeSize = ssnakeSize + 1;
             }
         }
     }
@@ -81,10 +89,13 @@ void getSize(const char *filename, int foodcount)
     fclose(in_file);
     // Closing file
 
+    // backword working
+    int foodCount = 0;
+    int *UNBEATABLE = &foodCount;
+    int *snakeSize = &ssnakeSize;
     char *TwoDBox[r];
-
     int *snakePosition;
-    snakePosition = (int *)malloc(snakeSize * sizeof(int));
+    snakePosition = (int *)malloc(*snakeSize * sizeof(int));
 
     for (int i = 0; i < r; i++)
         TwoDBox[i] = (char *)malloc(c * sizeof(char));
@@ -105,20 +116,20 @@ void getSize(const char *filename, int foodcount)
     }
 
     // TwoDBox[1][1] = '#';
-    // TwoDBox[1][snakeSize] = '>';
+    // TwoDBox[1][*snakeSize] = '>';
     // snakePosition[0] = 1 * c + 1;
-    // snakePosition[snakeSize - 1] = 1 * c + snakeSize;
+    // snakePosition[*snakeSize - 1] = 1 * c + *snakeSize;
 
-    // for (int j = 1; j < snakeSize; j++)
+    // for (int j = 2; j < *snakeSize; j++)
     // {
     //     TwoDBox[1][j] = '-';
     // }
-    // for (int j = 0; j < snakeSize; j++)
+    // for (int j = 1; j < *snakeSize - 1; j++)
     // {
     //     snakePosition[j] = 1 * c + j + 1;
     // }
 
-    // start reading
+    // another reading
     FILE *in_filee = fopen(filename, "r");
 
     if (!in_filee)
@@ -170,43 +181,31 @@ void getSize(const char *filename, int foodcount)
                 snakeicon = *ll;
 
                 flagg = flagg + 1;
-                addSnake(snakerow, snakecol, snakeicon, start);
+                // printf("%c", snakeicon);
                 TwoDBox[snakerow + 1][snakecol + 1] = snakeicon;
-                snakePosition[snakeSizee] = (snakerow + 1) * snakecol + snakeSizee + 1;
-                snakeSizee = snakeSizee + 1;
+                // (head[0]) * width + head[1];
+                snakePosition[snakeSiz] = ((snakerow + 1) * (r)) + snakecol + 1;
+                printf("%d\n", snakePosition[snakeSiz]);
+                snakeSiz = snakeSiz + 1;
             }
         }
     }
 
     fclose(in_filee);
-    // End Reading file
 
-    // struct Node *ptr = start;
-    // struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    // ptr = start;
-    // int pp = 0;
-    // while (ptr != NULL)
-    // {
-    //     TwoDBox[ptr->r + 1][ptr->c + 1] = ptr->icon;
-    //     printf("%c", TwoDBox[ptr->r + 1][ptr->c + 1]);
-    //     snakePosition[pp] = (ptr->r + 1) * c + pp;
-    //     ptr = ptr->next;
-    //     pp = pp + 1;
-
-    // }
-
+    // ending another reading
     int rc[] = {r, c};
     srand(time(0));
-    int *food = getarray(rc, snakeSize);
+    int *food = getarray(rc, *snakeSize);
 
     TwoDBox[food[0]][food[1]] = '@';
 
-    draw(r, c, TwoDBox, snakePosition);
+    draw(r, c, TwoDBox, snakePosition, UNBEATABLE);
 
-    int head[2] = {1, snakeSize};
-    int tail[2] = {1, 1};
+    // int head[2] = {1, *snakeSize};
+    // int tail[2] = {1, 1};
 
-    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize);
+    input(r, c, TwoDBox, food, head, tail, snakePosition, snakeSize, UNBEATABLE, 5);
     /* Code for further processing and free the
       dynamically allocated memory */
     for (int i = 0; i < r; i++)
